@@ -10,12 +10,30 @@ public class ScannerUtils {
         return texto !=null && !texto.isEmpty() && texto.matches("[a-zA-Z ]+");
     }
 
+    public static boolean  validarCedula (String cedula){
+        return cedula !=null && !cedula.isEmpty() && cedula.matches("^[0-9]{10}$");
+    }
+
+
+
     public static String capturarTexto(String mensaje) {
         while (true) {
             System.out.print(mensaje + ": ");
             String textoCapturado = INPUT.nextLine();
             if (!SoloTexto(textoCapturado)) {
                 System.out.println("Error: solo se permiten letras y no puede estar vacío");
+            } else {
+                return textoCapturado;
+            }
+        }
+    }
+
+    public static String capturarCedula(String mensaje) {
+        while (true) {
+            System.out.print(mensaje + ": ");
+            String textoCapturado = INPUT.nextLine();
+            if (!validarCedula(textoCapturado)) {
+                System.out.println("Error: cedula inválida (debe tener 10 dígitos)");
             } else {
                 return textoCapturado;
             }
